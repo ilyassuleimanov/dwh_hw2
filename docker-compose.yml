@@ -34,19 +34,19 @@ services:
 
   postgresql-master:
     image: postgres:latest
-    # restart: always
+    restart: always
     environment:
       POSTGRES_DB: "my_database"
       POSTGRES_USER: "my_user"
       POSTGRES_PASSWORD: "my_password"
     volumes:
-      - ./:/docker-entrypoint-initdb.d
+      - ./master_init/:/docker-entrypoint-initdb.d
     ports:
       - "50000:5432"
 
   dwh_detailed:
     image: postgres:latest
-    # restart: always
+    restart: always
     environment:
       POSTGRES_DB: "dwh_detailed"
       POSTGRES_USER: "dwh_user"
